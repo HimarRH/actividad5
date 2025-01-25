@@ -1,0 +1,39 @@
+<div class="flex justify-center mt-4 w-11/12 border-1 border-slate-200 shadow-2xl">
+    <form class="w-96 p-10" #blogForm="ngForm" (ngSubmit)="onSubmit(blogForm)">
+        <div class="mb-3 flex flex-col w">
+            <label for="title" class="form-label text-zinc-900 text-xl font-bold w-full">Título Noticia</label>
+            <input type="text" id="title" [(ngModel)]="blog.title" name="title" placeholder="Título"
+                pattern="[a-zA-Z ]*" required class="form-control" #title="ngModel">
+            <div *ngIf="title.invalid && (title.dirty || title.touched)" class="text-red-500">
+                <div *ngIf="title.errors?.['required']">El título es obligatorio.</div>
+                <div *ngIf="title.errors?.['pattern']">El título solo debe contener letras.</div>
+            </div>
+        </div>
+        <div class="mb-3 flex flex-col">
+            <label for="url" class="form-label text-zinc-900 text-xl font-bold">Url img</label>
+            <input type="url" id="img" [(ngModel)]="blog.img" name="img" class="form-control" placeholder="Url"
+                #img="ngModel">
+            <div *ngIf="img.invalid && (img.dirty || img.touched)" class="text-red-500">
+                <div *ngIf="img.errors?.['required']">La URL de la imagen es obligatoria.</div>
+                <div *ngIf="img.errors?.['pattern']">La URL de la imagen no es válida.</div>
+            </div>
+        </div>
+        <div class="mb-3 flex flex-col">
+            <label for="content" class="form-label text-zinc-900 text-xl font-bold">Contenido</label>
+            <textarea id="content" [(ngModel)]="blog.content" name="content" class="form-control" required
+                #content="ngModel"></textarea>
+            <div *ngIf="content.invalid && (content.dirty || content.touched)" class="text-red-500">
+                <div *ngIf="content.errors?.['required']">El contenido es obligatorio.</div>
+            </div>
+        </div>
+        <div class="mb-5 flex flex-col">
+            <label for="date" class="form-label text-zinc-900 text-xl font-bold">Fecha</label>
+            <input type="date" id="date" [(ngModel)]="blog.date" name="date" class="form-control" required
+                #date="ngModel">
+            <div *ngIf="date.invalid && (date.dirty || date.touched)" class="text-red-500">
+                <div *ngIf="date.errors?.['required']">La fecha es obligatoria.</div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="blogForm.invalid">Enviar</button>
+    </form>
+</div>
