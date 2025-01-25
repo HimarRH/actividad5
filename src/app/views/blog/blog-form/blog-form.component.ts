@@ -29,12 +29,24 @@ export class BlogFormComponent {
 
   onSubmit(form: NgForm): void {
     if (form.valid) {
-      localStorage.setItem('blogData', JSON.stringify(this.blog));
+      const data = localStorage.getItem('blogData');
+      let blogArray: BlogModel[] = [];
+      if (data) {
+        try {
+          blogArray = JSON.parse(data);
+          if (!Array.isArray(blogArray)) {
+            blogArray = [];
+          }
+        } catch (e) {
+          console.error('Error parsing blogData from localStorage', e);
+          blogArray = [];
+        }
+      }
+      blogArray.push(this.blog);
+      localStorage.setItem('blogData', JSON.stringify(blogArray));
       console.log('Datos guardados');
       form.reset();
-      this.route.navigate(['/blog'])
-
-
+      this.route.navigate(['/blog']);
     }
   }
 

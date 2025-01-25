@@ -18,4 +18,5 @@ export const routes: Routes = [
         ],
     },
     { path: '', redirectTo: '/blog', pathMatch: 'full' },
+    { path: '**', redirectTo: '/blog', pathMatch: 'full' },
 ];

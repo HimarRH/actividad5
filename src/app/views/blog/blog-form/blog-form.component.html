@@ -3,7 +3,7 @@
         <div class="mb-3 flex flex-col w">
             <label for="title" class="form-label text-zinc-900 text-xl font-bold w-full">Título Noticia</label>
             <input type="text" id="title" [(ngModel)]="blog.title" name="title" placeholder="Título"
-                pattern="[a-zA-Z ]*" required class="form-control" #title="ngModel">
+                pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]*" required class="form-control" #title="ngModel">
             <div *ngIf="title.invalid && (title.dirty || title.touched)" class="text-red-500">
                 <div *ngIf="title.errors?.['required']">El título es obligatorio.</div>
                 <div *ngIf="title.errors?.['pattern']">El título solo debe contener letras.</div>
