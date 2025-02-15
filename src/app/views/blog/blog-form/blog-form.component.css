@@ -6,3 +6,12 @@
     background-color: rgb(27, 89, 114);
     color: white;
 }
+.btn-secondary {
+  background-color: rgb(67, 199, 171);
+  color: white;
+}
+
+.btn-secondary:hover {
+background-color: rgb(34, 154, 128);
+color: white;
+}

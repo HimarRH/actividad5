@@ -21,7 +21,7 @@ export class BlogFormComponent {
   };
 
   constructor(
-    private route: Router
+    private readonly route: Router
   ) { }
 
   ngOnInit(): void {
@@ -48,6 +48,10 @@ export class BlogFormComponent {
       form.reset();
       this.route.navigate(['/blog']);
     }
+  }
+
+  public goBack(): void {
+    this.route.navigate(['']);
   }
 
 }
